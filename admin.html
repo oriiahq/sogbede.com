@@ -60,7 +60,7 @@
             padding: 0 40px;
             display: grid;
             grid-template-columns: 1fr;
-            gap: 40px;
+            gap: 60px; /* Increased space between sections */
         }
 
         /* Panel Cards */
@@ -83,6 +83,202 @@
             margin-bottom: 25px;
             padding-bottom: 15px;
             border-bottom: 2px solid rgba(226, 232, 240, 0.5);
+        }
+
+        /* Consolidated Layout */
+        .management-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+
+        .left-column {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .right-column {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        /* Compact Date Form */
+        .compact-date-form {
+            background: rgba(248, 250, 252, 0.6);
+            border: 1px solid rgba(226, 232, 240, 0.4);
+            border-radius: 15px;
+            padding: 20px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr auto auto;
+            gap: 15px;
+            align-items: end;
+            margin-bottom: 10px;
+        }
+
+        .form-group.compact {
+            margin-bottom: 0;
+        }
+
+        .form-group.compact label {
+            font-size: 0.85rem;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .form-input.compact {
+            padding: 8px 12px;
+            font-size: 0.9rem;
+            border-radius: 8px;
+            min-width: 0;
+        }
+
+        .admin-button.compact {
+            padding: 8px 16px;
+            font-size: 0.85rem;
+            white-space: nowrap;
+        }
+
+        .helper-text {
+            font-size: 0.75rem;
+            color: #64748b;
+            text-align: center;
+            margin-top: 5px;
+        }
+
+        /* Compact Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 0;
+        }
+
+        .stat-card {
+            padding: 15px;
+            border-radius: 12px;
+        }
+
+        /* Compact Dates List */
+        .dates-list.compact {
+            max-height: 350px;
+            overflow-y: auto;
+        }
+
+        .bulk-actions.compact {
+            background: rgba(255, 255, 255, 0.5);
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .bulk-actions.compact .bulk-controls {
+            gap: 8px;
+        }
+
+        /* Date Requirement Toggle */
+        .date-requirement-toggle {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.08) 100%);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+
+        .toggle-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .toggle-label {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            cursor: pointer;
+            font-weight: 600;
+            color: #1f2937;
+        }
+
+        .toggle-text {
+            font-size: 1.1rem;
+        }
+
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: #ccc;
+            transition: 0.3s;
+            border-radius: 34px;
+        }
+
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: 0.3s;
+            border-radius: 50%;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        input:checked + .toggle-slider {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+        }
+
+        input:checked + .toggle-slider:before {
+            transform: translateX(26px);
+        }
+
+        .toggle-status {
+            font-weight: 700;
+            padding: 6px 12px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            min-width: 80px;
+            text-align: center;
+        }
+
+        .toggle-status.required {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+        }
+
+        .toggle-status.optional {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            color: white;
+        }
+
+        .toggle-description {
+            color: #6b7280;
+            font-size: 0.95rem;
+            font-style: italic;
         }
 
         /* Date Management */
@@ -264,42 +460,55 @@
             font-weight: 600;
         }
 
-        /* Applications List */
+        /* Applications List - Grid Layout */
         .applications-list {
-            max-height: 500px;
+            max-height: 600px;
             overflow-y: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+            padding: 5px;
         }
 
         .application-item {
             background: rgba(255, 255, 255, 0.9);
             border: 1px solid rgba(226, 232, 240, 0.5);
-            border-radius: 12px;
-            padding: 12px;
-            margin-bottom: 8px;
+            border-radius: 16px;
+            padding: 20px;
             display: flex;
-            gap: 12px;
-            align-items: center;
+            flex-direction: column;
+            gap: 15px;
             transition: all 0.3s ease;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-            height: 80px; /* Fixed height for consistency */
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            min-height: 280px;
+            position: relative;
         }
 
         .application-item:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        }
+
+        /* Card Header with Photo */
+        .card-header {
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+            margin-bottom: 10px;
         }
 
         .media-thumbnail {
-            width: 60px;
-            height: 60px;
-            border-radius: 8px;
+            width: 120px;
+            height: 120px;
+            border-radius: 16px;
             overflow: hidden;
             position: relative;
             flex-shrink: 0;
             background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-            border: 1px solid rgba(226, 232, 240, 0.3);
+            border: 2px solid rgba(226, 232, 240, 0.3);
             cursor: pointer;
             transition: all 0.3s ease;
+            align-self: center;
         }
 
         .media-thumbnail:hover {
@@ -330,12 +539,12 @@
             color: white;
             border: none;
             border-radius: 50%;
-            width: 20px;
-            height: 20px;
+            width: 30px;
+            height: 30px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.7rem;
+            font-size: 1rem;
             cursor: pointer;
             transition: all 0.3s ease;
         }
@@ -345,65 +554,75 @@
             transform: translate(-50%, -50%) scale(1.2);
         }
 
-        .application-content {
+        /* Card Content Layout */
+        .card-main-info {
             flex: 1;
-            min-width: 0;
             display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .applicant-info {
-            flex: 1;
-            min-width: 0;
+            flex-direction: column;
+            gap: 8px;
         }
 
         .applicant-name {
             font-weight: 700;
             color: #1e293b;
-            font-size: 0.95rem;
+            font-size: 1.1rem;
             line-height: 1.2;
-            margin-bottom: 2px;
+            margin-bottom: 4px;
         }
 
         .applicant-email {
             color: #475569;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             line-height: 1.2;
+            margin-bottom: 8px;
         }
 
-        .compact-details {
-            display: flex;
-            gap: 20px;
-            align-items: center;
-            flex: 2;
+        .card-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin: 12px 0;
         }
 
-        .detail-compact {
+        .detail-item {
             font-size: 0.8rem;
             color: #64748b;
+            line-height: 1.3;
         }
 
-        .detail-compact strong {
+        .detail-item strong {
             color: #1e293b;
             font-weight: 600;
+            display: block;
+            margin-bottom: 2px;
         }
 
         .filming-date-badge {
             background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
             color: #fff;
-            padding: 4px 10px;
+            padding: 8px 12px;
             border-radius: 12px;
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             font-weight: 600;
-            white-space: nowrap;
-            flex-shrink: 0;
+            text-align: center;
+            margin: 10px 0;
+            display: inline-block;
+            width: fit-content;
         }
 
         .action-buttons {
             display: flex;
-            gap: 5px;
-            flex-shrink: 0;
+            gap: 8px;
+            margin-top: auto;
+            padding-top: 15px;
+            border-top: 1px solid rgba(226, 232, 240, 0.3);
+        }
+
+        .action-buttons .admin-button {
+            flex: 1;
+            text-align: center;
+            padding: 8px 12px;
+            font-size: 0.8rem;
         }
 
         .media-modal {
@@ -484,6 +703,22 @@
                 padding: 0 20px;
                 gap: 30px;
             }
+
+            /* Stack columns on mobile */
+            .management-layout {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
             
             .header-container {
                 padding: 0 20px;
@@ -500,32 +735,40 @@
                 padding: 25px;
             }
             
+            /* Mobile card layout */
+            .applications-list {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
             .application-item {
-                height: auto;
-                flex-direction: row;
-                flex-wrap: wrap;
+                min-height: auto;
+                padding: 15px;
+            }
+
+            .card-header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
                 gap: 10px;
-                padding: 10px;
             }
 
             .media-thumbnail {
-                width: 50px;
-                height: 50px;
+                width: 100px;
+                height: 100px;
             }
 
-            .application-content {
-                flex-direction: column;
-                gap: 8px;
-            }
-            
-            .compact-details {
-                flex-direction: column;
-                gap: 5px;
-                align-items: flex-start;
+            .card-details {
+                grid-template-columns: 1fr;
+                gap: 6px;
             }
 
             .action-buttons {
                 flex-direction: column;
+                gap: 8px;
+            }
+
+            .action-buttons .admin-button {
                 width: 100%;
             }
 
@@ -621,74 +864,318 @@
         .message.show {
             display: block;
         }
+
+        /* Login Modal Styles */
+        .login-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+        }
+
+        .login-content {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 40px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 400px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .login-content h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, #1e293b 0%, #475569 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .logout-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            z-index: 9999;
+            transition: all 0.3s ease;
+        }
+
+        .logout-button:hover {
+            background: linear-gradient(135deg, #b91c1c 0%, #991b1b 100%);
+            transform: translateY(-1px);
+        }
+
+        /* Dark Mode Toggle */
+        .dark-mode-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            z-index: 9999;
+            transition: all 0.3s ease;
+            font-size: 0.85rem;
+        }
+
+        .dark-mode-toggle:hover {
+            background: linear-gradient(135deg, #3730a3 0%, #5b21b6 100%);
+            transform: translateY(-1px);
+        }
+
+        /* Dark Mode Styles */
+        body.dark-mode {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f1629 100%);
+            color: #e2e8f0;
+        }
+
+        body.dark-mode .admin-header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #020617 100%);
+        }
+
+        body.dark-mode .admin-panel {
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid rgba(51, 65, 85, 0.3);
+        }
+
+        body.dark-mode .panel-title {
+            background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        body.dark-mode .compact-date-form {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(51, 65, 85, 0.4);
+        }
+
+        body.dark-mode .form-input,
+        body.dark-mode .form-select {
+            background: rgba(15, 23, 42, 0.8);
+            border: 2px solid rgba(51, 65, 85, 0.6);
+            color: #e2e8f0;
+        }
+
+        body.dark-mode .form-input:focus,
+        body.dark-mode .form-select:focus {
+            background: rgba(15, 23, 42, 0.9);
+            border-color: #4f46e5;
+        }
+
+        body.dark-mode .stat-card {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            border: 1px solid rgba(51, 65, 85, 0.5);
+        }
+
+        body.dark-mode .stat-number {
+            background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        body.dark-mode .stat-label {
+            color: #94a3b8;
+        }
+
+        body.dark-mode .date-item {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(51, 65, 85, 0.5);
+        }
+
+        body.dark-mode .date-item:hover {
+            background: rgba(30, 41, 59, 0.9);
+        }
+
+        body.dark-mode .application-item {
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid rgba(51, 65, 85, 0.5);
+        }
+
+        body.dark-mode .application-item:hover {
+            background: rgba(30, 41, 59, 0.9);
+        }
+
+        body.dark-mode .bulk-actions.compact {
+            background: rgba(15, 23, 42, 0.5);
+            border: 1px solid rgba(51, 65, 85, 0.3);
+        }
+
+        body.dark-mode .login-content {
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid rgba(51, 65, 85, 0.3);
+        }
+
+        body.dark-mode .helper-text {
+            color: #94a3b8;
+        }
+
+        body.dark-mode .applicant-name {
+            color: #e2e8f0;
+        }
+
+        body.dark-mode .applicant-email {
+            color: #cbd5e1;
+        }
+
+        body.dark-mode .detail-compact {
+            color: #94a3b8;
+        }
+
+        body.dark-mode .detail-compact strong {
+            color: #e2e8f0;
+        }
+
+        body.dark-mode .detail-item {
+            color: #94a3b8;
+        }
+
+        body.dark-mode .detail-item strong {
+            color: #e2e8f0;
+        }
+
+        body.dark-mode .card-header {
+            border-bottom: 1px solid rgba(51, 65, 85, 0.3);
+        }
+
+        body.dark-mode .action-buttons {
+            border-top: 1px solid rgba(51, 65, 85, 0.3);
+        }
     </style>
 </head>
 <body>
     <header class="admin-header">
         <div class="header-container">
             <h1 class="admin-title">🎬 ṢOGBÉDÈ Admin Panel</h1>
-            <a href="home.html" class="back-link">← Back to Website</a>
+            <a href="index.html" class="back-link">← Back to Website</a>
         </div>
     </header>
 
-    <div class="admin-container">
-        <!-- Filming Date Management Panel -->
+    <!-- Admin Login Modal -->
+    <div id="loginModal" class="login-modal" style="display: none;">
+        <div class="login-content">
+            <h2>🔐 Admin Login</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="adminEmail">Email:</label>
+                    <input type="email" id="adminEmail" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="adminPassword">Password:</label>
+                    <input type="password" id="adminPassword" class="form-input" required>
+                </div>
+                <button type="submit" class="admin-button" style="width: 100%;">Login</button>
+            </form>
+            <div id="loginError" class="message error"></div>
+        </div>
+    </div>
+
+    <div class="admin-container" id="adminContent" style="display: none;">
+        <!-- Consolidated Layout -->
         <div class="admin-panel">
             <h2 class="panel-title">📅 Filming Date Management</h2>
             
-            <!-- Stats -->
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-number" id="totalDates">12</div>
-                    <div class="stat-label">Total Dates</div>
+            <!-- Date Requirement Toggle -->
+            <div class="date-requirement-toggle">
+                <div class="toggle-container">
+                    <label class="toggle-label">
+                        <span class="toggle-text">📋 Require contestants to select filming date:</span>
+                        <div class="toggle-switch">
+                            <input type="checkbox" id="dateRequiredToggle" onchange="toggleDateRequirement()" checked>
+                            <span class="toggle-slider"></span>
+                        </div>
+                        <span id="toggleStatus" class="toggle-status">Required</span>
+                    </label>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-number" id="availableDates">8</div>
-                    <div class="stat-label">Available</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number" id="fullDates">2</div>
-                    <div class="stat-label">Full</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number" id="totalApplications">24</div>
-                    <div class="stat-label">Applications</div>
+                <div class="toggle-description">
+                    <span id="toggleDescription">Contestants must select a filming date when applying</span>
                 </div>
             </div>
+            
+            <!-- Two Column Layout -->
+            <div class="management-layout">
+                <!-- Left Column: Stats + Form -->
+                <div class="left-column">
+                    <!-- Stats -->
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-number" id="totalDates">12</div>
+                            <div class="stat-label">Total Dates</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="availableDates">8</div>
+                            <div class="stat-label">Available</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="fullDates">2</div>
+                            <div class="stat-label">Full</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="totalApplications">24</div>
+                            <div class="stat-label">Applications</div>
+                        </div>
+                    </div>
 
-            <!-- Add New Date Form -->
-            <div class="date-form">
-                <div id="dateMessage" class="message"></div>
-                
-                <div class="form-group">
-                    <label for="newDate">Add New Filming Date:</label>
-                    <input type="date" id="newDate" class="form-input">
-                </div>
-                
-                <div class="form-group">
-                    <label for="maxCapacity">Maximum Contestants:</label>
-                    <input type="number" id="maxCapacity" class="form-input" min="1" max="50" value="10" step="1" placeholder="Enter number of contestants">
-                    <div class="helper-text" style="font-size: 0.8rem; color: #64748b; margin-top: 5px;">
-                        Recommended: 8-15 contestants per filming session
+                    <!-- Compact Date Form -->
+                    <div class="compact-date-form">
+                        <div id="dateMessage" class="message"></div>
+                        
+                        <div class="form-row">
+                            <div class="form-group compact">
+                                <label for="newDate">New Date:</label>
+                                <input type="date" id="newDate" class="form-input compact">
+                            </div>
+                            
+                            <div class="form-group compact">
+                                <label for="maxCapacity">Max:</label>
+                                <input type="number" id="maxCapacity" class="form-input compact" min="1" max="50" value="10" step="1" placeholder="10">
+                            </div>
+                            
+                            <div class="form-group compact">
+                                <button onclick="addFilmingDate()" class="admin-button compact">Add Date</button>
+                            </div>
+                        </div>
+                        
+                        <div class="helper-text">Recommended: 8-15 contestants per session</div>
                     </div>
                 </div>
-                
-                <button onclick="addFilmingDate()" class="admin-button">Add Filming Date</button>
-            </div>
 
-            <!-- Bulk Actions -->
-            <div class="bulk-actions" id="bulkActions" style="display: none;">
-                <div class="bulk-controls">
-                    <span id="selectedCount">0 dates selected</span>
-                    <button class="admin-button small" onclick="selectAllDates()">Select All</button>
-                    <button class="admin-button small" onclick="deselectAllDates()">Select None</button>
-                    <button class="admin-button danger" onclick="bulkDeleteDates()">Delete Selected</button>
+                <!-- Right Column: Dates List -->
+                <div class="right-column">
+                    <!-- Bulk Actions -->
+                    <div class="bulk-actions compact" id="bulkActions" style="display: none;">
+                        <div class="bulk-controls">
+                            <span id="selectedCount">0 selected</span>
+                            <button class="admin-button small" onclick="selectAllDates()">All</button>
+                            <button class="admin-button small" onclick="deselectAllDates()">None</button>
+                            <button class="admin-button danger small" onclick="bulkDeleteDates()">Delete</button>
+                        </div>
+                    </div>
+
+                    <!-- Current Dates List -->
+                    <div class="dates-list compact" id="datesList">
+                        <!-- Dates will be populated by JavaScript -->
+                    </div>
                 </div>
-            </div>
-
-            <!-- Current Dates List -->
-            <div class="dates-list" id="datesList">
-                <!-- Dates will be populated by JavaScript -->
             </div>
         </div>
 
@@ -712,8 +1199,26 @@
         </div>
     </div>
 
+    <script src="config.js"></script>
     <script>
-        // Load filming dates from localStorage or use defaults
+        // Load filming dates from localStorage or use defaults  
+        async function loadFilmingDatesConfigFromSupabase() {
+            try {
+                const { data, error } = await supabase
+                    .from('admin_settings')
+                    .select('setting_value')
+                    .eq('setting_key', 'filming_dates_config')
+                    .single();
+                
+                if (!error && data) {
+                    return data.setting_value;
+                }
+            } catch (err) {
+                console.log('Could not load from Supabase, using localStorage');
+            }
+            return null;
+        }
+        
         function loadFilmingDatesConfig() {
             const saved = localStorage.getItem('sogbede_filming_config');
             if (saved) {
@@ -737,6 +1242,7 @@
                     '2025-05-24',  // May 24
                 ],
                 maxCapacityPerDate: 10,
+                dateRequired: true, // NEW: Whether contestants must select a date
                 currentBookings: {
                     '2025-03-15': 2,  // 2 people booked
                     '2025-03-22': 5,  // 5 people booked
@@ -746,92 +1252,194 @@
             };
         }
 
-        // Save filming dates to localStorage
-        function saveFilmingDatesConfig() {
+        // Save filming dates to localStorage and Supabase
+        async function saveFilmingDatesConfig() {
+            // Save to localStorage (immediate)
             localStorage.setItem('sogbede_filming_config', JSON.stringify(filmingDatesConfig));
             console.log('Filming dates configuration saved to localStorage');
+            
+            // Also save to Supabase for persistence across sessions
+            try {
+                const { error } = await supabase
+                    .from('admin_settings')
+                    .upsert({
+                        setting_key: 'filming_dates_config',
+                        setting_value: filmingDatesConfig,
+                        updated_at: new Date().toISOString()
+                    }, { onConflict: 'setting_key' });
+                
+                if (error) {
+                    console.warn('Could not sync config to Supabase:', error);
+                } else {
+                    console.log('Configuration synced to Supabase successfully');
+                }
+            } catch (err) {
+                console.warn('Supabase sync failed, using localStorage only:', err);
+            }
+        }
+
+        // Toggle date requirement function
+        function toggleDateRequirement() {
+            const toggle = document.getElementById('dateRequiredToggle');
+            const status = document.getElementById('toggleStatus');
+            const description = document.getElementById('toggleDescription');
+            
+            filmingDatesConfig.dateRequired = toggle.checked;
+            
+            if (toggle.checked) {
+                status.textContent = 'Required';
+                status.className = 'toggle-status required';
+                description.textContent = 'Contestants must select a filming date when applying';
+            } else {
+                status.textContent = 'Optional';
+                status.className = 'toggle-status optional';
+                description.textContent = 'Contestants can apply without selecting a filming date';
+            }
+            
+            // Save configuration
+            saveFilmingDatesConfig();
+            
+            // Show success message
+            showMessage(`Date selection is now ${toggle.checked ? 'required' : 'optional'} for new applications`, 'success');
+        }
+
+        // Initialize toggle state
+        function initializeDateRequirementToggle() {
+            const toggle = document.getElementById('dateRequiredToggle');
+            const status = document.getElementById('toggleStatus');
+            const description = document.getElementById('toggleDescription');
+            
+            toggle.checked = filmingDatesConfig.dateRequired !== false; // Default to true
+            
+            if (toggle.checked) {
+                status.textContent = 'Required';
+                status.className = 'toggle-status required';
+                description.textContent = 'Contestants must select a filming date when applying';
+            } else {
+                status.textContent = 'Optional';
+                status.className = 'toggle-status optional';
+                description.textContent = 'Contestants can apply without selecting a filming date';
+            }
         }
 
         let filmingDatesConfig = loadFilmingDatesConfig();
 
-        // Airtable configuration
-        const AIRTABLE_CONFIG = {
-            baseId: 'app7EntMyrtZ3tYzH',
-            tableId: 'tblZADISKwPqRdKjB',
-            apiKey: 'patO52pSm5IiEhycF.de0b687c7e1a8acc2125e197769f103be0d96e3c05adc7d51aec05577c81a9d4'
-        };
+        // Supabase configuration (loaded from config.js)
+        console.log('📡 Admin using Supabase config:', window.SOGBEDE_CONFIG?.supabase);
 
-        // Load applications from both Airtable and localStorage
+        // Initialize Supabase
+        let supabase;
+        
+        async function initSupabase() {
+            if (!window.supabase) {
+                const script = document.createElement('script');
+                script.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2';
+                document.head.appendChild(script);
+                
+                await new Promise(resolve => {
+                    script.onload = resolve;
+                });
+            }
+            
+            supabase = window.supabase.createClient(window.SOGBEDE_CONFIG.supabase.url, window.SOGBEDE_CONFIG.supabase.anon_key);
+            console.log('✅ Admin panel: Supabase initialized');
+        }
+
+        // Test Supabase connection
+        async function testSupabaseConnection() {
+            try {
+                await initSupabase();
+                const { data, error, count } = await supabase
+                    .from('applications')
+                    .select('*', { count: 'exact', head: true });
+                
+                if (error) {
+                    console.error('Supabase connection failed:', error);
+                    return { success: false, error: error.message };
+                }
+                
+                console.log('✅ Admin: Supabase connection successful, found records:', count);
+                return { success: true, recordCount: count || 0 };
+            } catch (error) {
+                console.error('Supabase connection error:', error);
+                return { success: false, error: error.message };
+            }
+        }
+
+        // Load applications from both Supabase and localStorage
         async function loadApplications() {
-            let airtableApplications = [];
+            let supabaseApplications = [];
             let localApplications = [];
             
-            // Always load localStorage data first
+            // Always load localStorage data first (for fallback)
             localApplications = JSON.parse(localStorage.getItem('sogbede_applications') || '[]');
             console.log('Found local applications:', localApplications.length);
             
             try {
-                // Try to load from Airtable
-                console.log('Attempting to load from Airtable...');
-                const response = await fetch(`https://api.airtable.com/v0/${AIRTABLE_CONFIG.baseId}/${AIRTABLE_CONFIG.tableId}?sort%5B0%5D%5Bfield%5D=Submission%20Date&sort%5B0%5D%5Bdirection%5D=desc`, {
-                    headers: {
-                        'Authorization': `Bearer ${AIRTABLE_CONFIG.apiKey}`
-                    }
-                });
+                // Try to load from Supabase
+                console.log('Attempting to load from Supabase...');
+                await initSupabase();
+                
+                const { data, error } = await supabase
+                    .from('applications')
+                    .select('*')
+                    .order('created_at', { ascending: false });
 
-                if (response.ok) {
-                    const data = await response.json();
-                    console.log('Found Airtable applications:', data.records.length);
-                    
-                    // Transform Airtable data to match our expected format
-                    airtableApplications = data.records.map(record => ({
-                        submissionId: record.id,
-                        firstName: record.fields['First Name'] || '',
-                        lastName: record.fields['Last Name'] || '',
-                        email: record.fields['Email'] || '',
-                        phone: record.fields['Phone'] || '',
-                        city: record.fields['City'] || '',
-                        state: record.fields['State'] || '',
-                        country: record.fields['Country'] || '',
-                        age: record.fields['Age'] || '',
-                        occupation: record.fields['Occupation'] || '',
-                        businessOrSocial: record.fields['Business/Social'] || '',
-                        interests: record.fields['Interests'] || '',
-                        filmingDate: record.fields['Filming Date'] || '',
-                        partnerFirstName: record.fields['Partner First Name'] || '',
-                        partnerLastName: record.fields['Partner Last Name'] || '',
-                        partnerPhone: record.fields['Partner Phone'] || '',
-                        submissionDate: record.fields['Submission Date'] || record.createdTime,
-                        status: record.fields['Status'] || 'pending',
-                        source: 'airtable',
-                        // Media info
-                        selfie: record.fields['Media'] && record.fields['Media'].length > 0 ? {
-                            name: record.fields['Media'][0].filename,
-                            type: record.fields['Media'][0].type || 'unknown',
-                            url: record.fields['Media'][0].url
-                        } : null
-                    }));
-                } else {
-                    console.warn('Airtable API response not OK:', response.status, response.statusText);
+                if (error) {
+                    console.error('Supabase load error:', error);
+                    throw error;
                 }
+
+                console.log('Found Supabase applications:', data.length);
+                
+                // Transform Supabase data to match our expected format
+                supabaseApplications = data.map(record => ({
+                    submissionId: record.id,
+                    firstName: record.first_name || '',
+                    lastName: record.last_name || '',
+                    email: record.email || '',
+                    phone: record.phone || '',
+                    city: record.city || '',
+                    state: record.state || '',
+                    country: record.country || '',
+                    age: record.age || '',
+                    occupation: record.occupation || '',
+                    businessOrSocial: record.business_social || '',
+                    interests: record.interests || '',
+                    filmingDate: record.filming_date || '',
+                    partnerFirstName: record.partner_first_name || '',
+                    partnerLastName: record.partner_last_name || '',
+                    partnerPhone: record.partner_phone || '',
+                    submissionDate: record.created_at,
+                    status: record.status || 'pending',
+                    source: 'supabase',
+                    // Media info
+                    selfie: record.media_url ? {
+                        name: record.media_filename || 'uploaded_file',
+                        type: record.media_type || 'unknown',
+                        url: record.media_url,
+                        size: record.media_size
+                    } : null
+                }));
+                
             } catch (error) {
-                console.error('Error loading applications from Airtable:', error);
+                console.error('Error loading applications from Supabase:', error);
             }
             
             // Combine and deduplicate applications
             const allApplications = [];
             const seenEmails = new Set();
             
-            // Add Airtable applications first (they take priority)
-            airtableApplications.forEach(app => {
+            // Add Supabase applications first (they take priority)
+            supabaseApplications.forEach(app => {
                 if (!seenEmails.has(app.email)) {
-                    app.source = 'airtable';
+                    app.source = 'supabase';
                     allApplications.push(app);
                     seenEmails.add(app.email);
                 }
             });
             
-            // Add localStorage applications that aren't already in Airtable
+            // Add localStorage applications that aren't already in Supabase
             localApplications.forEach(app => {
                 if (!seenEmails.has(app.email)) {
                     app.source = 'local';
@@ -1055,26 +1663,41 @@
 
                 const sourceIndicator = app.source === 'local' ? 
                     '<span style="background: #f59e0b; color: white; font-size: 0.65rem; padding: 2px 6px; border-radius: 4px; margin-left: 8px;">LOCAL</span>' : 
-                    '<span style="background: #10b981; color: white; font-size: 0.65rem; padding: 2px 6px; border-radius: 4px; margin-left: 8px;">SYNCED</span>';
+                    '<span style="background: #10b981; color: white; font-size: 0.65rem; padding: 2px 6px; border-radius: 4px; margin-left: 8px;">SUPABASE</span>';
 
                 applicationItem.innerHTML = `
-                    ${mediaHtml}
-                    <div class="application-content">
-                        <div class="applicant-info">
+                    <div class="card-header">
+                        ${mediaHtml}
+                        <div class="card-main-info">
                             <div class="applicant-name">${app.firstName} ${app.lastName} ${sourceIndicator}</div>
                             <div class="applicant-email">${app.email}</div>
+                            <div class="filming-date-badge">${filmingDateFormatted}</div>
                         </div>
-                        <div class="compact-details">
-                            <div class="detail-compact">Age: <strong>${app.age}</strong></div>
-                            <div class="detail-compact">Partner: <strong>${partnerName}</strong></div>
-                            <div class="detail-compact">Location: <strong>${app.city}, ${app.state || app.country}</strong></div>
+                    </div>
+                    
+                    <div class="card-details">
+                        <div class="detail-item">
+                            <strong>Age</strong>
+                            ${app.age} years old
                         </div>
-                        <div class="filming-date-badge">${filmingDateFormatted}</div>
-                        <div class="action-buttons">
-                            <button class="admin-button small" onclick="viewFullApplication('${app.submissionId}')">View</button>
-                            <button class="admin-button small" onclick="contactApplicant('${app.email}')">Email</button>
-                            <button class="admin-button small danger" onclick="removeApplication('${app.submissionId}')">Remove</button>
+                        <div class="detail-item">
+                            <strong>Partner</strong>
+                            ${partnerName}
                         </div>
+                        <div class="detail-item">
+                            <strong>Location</strong>
+                            ${app.city}, ${app.state || app.country}
+                        </div>
+                        <div class="detail-item">
+                            <strong>Occupation</strong>
+                            ${app.occupation || 'Not provided'}
+                        </div>
+                    </div>
+                    
+                    <div class="action-buttons">
+                        <button class="admin-button small" onclick="viewFullApplication('${app.submissionId}')">View</button>
+                        <button class="admin-button small" onclick="contactApplicant('${app.email}')">Email</button>
+                        <button class="admin-button small danger" onclick="removeApplication('${app.submissionId}')">Remove</button>
                     </div>
                 `;
                 
@@ -1093,13 +1716,119 @@
             }
         }
 
-        // Initialize admin panel
+        // Authentication state
+        let currentUser = null;
+
+        // Check if user is authenticated
+        async function checkAuth() {
+            await initSupabase();
+            const { data: { user } } = await supabase.auth.getUser();
+            
+            if (user) {
+                currentUser = user;
+                showAdminPanel();
+            } else {
+                showLoginModal();
+            }
+        }
+
+        // Show login modal
+        function showLoginModal() {
+            document.getElementById('loginModal').style.display = 'flex';
+            document.getElementById('adminContent').style.display = 'none';
+        }
+
+        // Show admin panel
+        function showAdminPanel() {
+            document.getElementById('loginModal').style.display = 'none';
+            document.getElementById('adminContent').style.display = 'block';
+            
+            // Initialize date requirement toggle
+            initializeDateRequirementToggle();
+            
+            // Add logout button
+            if (!document.getElementById('logoutButton')) {
+                const logoutBtn = document.createElement('button');
+                logoutBtn.id = 'logoutButton';
+                logoutBtn.className = 'logout-button';
+                logoutBtn.textContent = 'Logout';
+                logoutBtn.onclick = handleLogout;
+                document.body.appendChild(logoutBtn);
+            }
+
+            // Add dark mode toggle
+            if (!document.getElementById('darkModeToggle')) {
+                const darkModeBtn = document.createElement('button');
+                darkModeBtn.id = 'darkModeToggle';
+                darkModeBtn.className = 'dark-mode-toggle';
+                darkModeBtn.textContent = '🌙 Dark Mode';
+                darkModeBtn.onclick = toggleDarkMode;
+                document.body.appendChild(darkModeBtn);
+                
+                // Load saved dark mode preference
+                loadDarkModePreference();
+            }
+            
+            // Initialize admin panel
+            initializeAdminPanel();
+        }
+
+        // Handle login
+        async function handleLogin(event) {
+            event.preventDefault();
+            
+            const email = document.getElementById('adminEmail').value;
+            const password = document.getElementById('adminPassword').value;
+            const errorDiv = document.getElementById('loginError');
+            
+            try {
+                await initSupabase();
+                
+                const { data, error } = await supabase.auth.signInWithPassword({
+                    email: email,
+                    password: password,
+                });
+
+                if (error) {
+                    errorDiv.textContent = error.message;
+                    errorDiv.style.display = 'block';
+                    return;
+                }
+
+                currentUser = data.user;
+                console.log('✅ Admin logged in:', currentUser.email);
+                showAdminPanel();
+                
+            } catch (error) {
+                console.error('Login error:', error);
+                errorDiv.textContent = 'Login failed. Please try again.';
+                errorDiv.style.display = 'block';
+            }
+        }
+
+        // Handle logout
+        async function handleLogout() {
+            await supabase.auth.signOut();
+            currentUser = null;
+            console.log('👋 Admin logged out');
+            
+            // Remove logout button and dark mode toggle
+            const logoutBtn = document.getElementById('logoutButton');
+            const darkModeBtn = document.getElementById('darkModeToggle');
+            if (logoutBtn) logoutBtn.remove();
+            if (darkModeBtn) darkModeBtn.remove();
+            
+            showLoginModal();
+        }
+
+        // Initialize admin panel (after authentication)
         function initializeAdminPanel() {
             updateStats();
             renderDatesList();
             populateFilterDropdown();
             renderApplicationsList();
         }
+
 
         // Update statistics
         function updateStats() {
@@ -1447,33 +2176,55 @@ Application ID: ${app.submissionId}
         // Remove application
         async function removeApplication(submissionId) {
             try {
-                // First, get the application details from Airtable
-                const response = await fetch(`https://api.airtable.com/v0/${AIRTABLE_CONFIG.baseId}/${AIRTABLE_CONFIG.tableId}/${submissionId}`, {
-                    headers: {
-                        'Authorization': `Bearer ${AIRTABLE_CONFIG.apiKey}`
-                    }
-                });
+                await initSupabase();
+                
+                // First, get the application details from Supabase
+                const { data: record, error: fetchError } = await supabase
+                    .from('applications')
+                    .select('*')
+                    .eq('id', submissionId)
+                    .single();
 
-                if (!response.ok) {
+                if (fetchError || !record) {
                     throw new Error('Application not found');
                 }
 
-                const record = await response.json();
-                const firstName = record.fields['First Name'] || 'Unknown';
-                const lastName = record.fields['Last Name'] || 'User';
-                const filmingDate = record.fields['Filming Date'];
+                const firstName = record.first_name || 'Unknown';
+                const lastName = record.last_name || 'User';
+                const filmingDate = record.filming_date;
+                const mediaUrl = record.media_url;
                 
                 if (confirm(`Are you sure you want to remove ${firstName} ${lastName}'s application? This cannot be undone.`)) {
-                    // Delete from Airtable
-                    const deleteResponse = await fetch(`https://api.airtable.com/v0/${AIRTABLE_CONFIG.baseId}/${AIRTABLE_CONFIG.tableId}/${submissionId}`, {
-                        method: 'DELETE',
-                        headers: {
-                            'Authorization': `Bearer ${AIRTABLE_CONFIG.apiKey}`
+                    
+                    // Delete media file if it exists
+                    if (mediaUrl) {
+                        try {
+                            // Extract filename from URL
+                            const urlParts = mediaUrl.split('/');
+                            const fileName = urlParts[urlParts.length - 1];
+                            
+                            const { error: deleteFileError } = await supabase.storage
+                                .from('media')
+                                .remove([fileName]);
+                            
+                            if (deleteFileError) {
+                                console.warn('Could not delete media file:', deleteFileError);
+                            } else {
+                                console.log('✅ Media file deleted');
+                            }
+                        } catch (fileError) {
+                            console.warn('Error deleting media file:', fileError);
                         }
-                    });
+                    }
 
-                    if (!deleteResponse.ok) {
-                        throw new Error('Failed to delete application from Airtable');
+                    // Delete from Supabase
+                    const { error: deleteError } = await supabase
+                        .from('applications')
+                        .delete()
+                        .eq('id', submissionId);
+
+                    if (deleteError) {
+                        throw new Error(`Failed to delete application from Supabase: ${deleteError.message}`);
                     }
 
                     // Also remove from localStorage backup
@@ -1503,8 +2254,41 @@ Application ID: ${app.submissionId}
             }
         }
 
+        // Dark Mode Functions
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            
+            // Update button text
+            const toggleBtn = document.getElementById('darkModeToggle');
+            if (toggleBtn) {
+                toggleBtn.textContent = isDark ? '☀️ Light Mode' : '🌙 Dark Mode';
+            }
+            
+            // Save preference
+            localStorage.setItem('sogbede_dark_mode', isDark ? 'enabled' : 'disabled');
+            console.log('🎨 Dark mode:', isDark ? 'enabled' : 'disabled');
+        }
+
+        function loadDarkModePreference() {
+            const darkMode = localStorage.getItem('sogbede_dark_mode');
+            if (darkMode === 'enabled') {
+                document.body.classList.add('dark-mode');
+                const toggleBtn = document.getElementById('darkModeToggle');
+                if (toggleBtn) {
+                    toggleBtn.textContent = '☀️ Light Mode';
+                }
+            }
+        }
+
         // Initialize when page loads
-        document.addEventListener('DOMContentLoaded', initializeAdminPanel);
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set up login form handler
+            document.getElementById('loginForm').addEventListener('submit', handleLogin);
+            
+            // Check authentication status
+            checkAuth();
+        });
 
         // Export configuration (in a real system, this would sync with a database)
         function exportConfig() {
