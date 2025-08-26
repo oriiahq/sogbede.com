@@ -15,12 +15,20 @@ private/
 # Operating System Files
 .DS_Store
 .DS_Store?
+**/.DS_Store
 ._*
 .Spotlight-V100
 .Trashes
 ehthumbs.db
 Thumbs.db
 desktop.ini
+
+# Temporary and backup files
+*.tmp
+*.temp
+*.bak
+*.backup
+*~
 
 # Editor Files
 .vscode/
@@ -51,9 +59,10 @@ temp/
 *.backup
 *_backup.*
 
-# Database backups
-*.sql
+# Database backups (but allow setup files)
 *.dump
+# Allow SQL setup files
+!SUPABASE_*.sql
 
 # SSL Certificates
 *.pem
@@ -61,7 +70,24 @@ temp/
 *.crt
 *.cert
 
-# Archive files
+# Archive files  
 *.zip
 *.tar.gz
 *.rar
+
+# CLI tools and downloads
+supabase-cli*
+supabase
+/supabase
+
+# Email system files (keep for reference, don't deploy)
+email-integration-code.js
+supabase-email-function.js
+
+# Documentation files (don't deploy to production)
+*.md
+!README.md  # Keep main README
+COPY_THESE_FILES.txt
+FINAL_*.txt
+prepare-deploy.sh
+deploy.php

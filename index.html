@@ -27,12 +27,25 @@
     <meta name="twitter:description" content="Celebrate Yoruba culture and win prizes on the most exciting cultural game show!">
     <meta name="twitter:image" content="https://sogbede.com/wp-content/uploads/2025/06/Screenshot-2025-06-15-at-2.44.36%E2%80%AFPM-e1750050667115.png">
     
+    <!-- Performance Optimizations -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="https://youtube.com">
+    <link rel="dns-prefetch" href="https://instagram.com">
+    
+    <!-- Custom fonts removed - using system fonts for clean appearance -->
+    
+    <!-- Critical Resource Hints -->
+    <link rel="preload" href="images/header.png" as="image" media="(min-width: 768px)">
+    <link rel="preload" href="images/mobile header.jpg?v=1735238000" as="image" media="(max-width: 767px)">
+    
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     
-    <!-- Swiper CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    <!-- Swiper CSS - Preloaded -->
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"></noscript>
     <style>
         * {
             margin: 0;
@@ -134,45 +147,177 @@
 
         /* Mobile menu styles */
         @media (max-width: 768px) {
+            .nav-container {
+                padding: 0 20px;
+                justify-content: space-between;
+            }
+            
+            .nav-menu {
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                gap: 8px;
+                position: relative;
+                margin-left: auto;
+                width: auto;
+            }
+            
+            .cta-button {
+                display: block !important;
+                padding: 8px 16px;
+                font-size: 0.9rem;
+                white-space: nowrap;
+                order: 1;
+                box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
+            }
+            
+            .mobile-menu-toggle {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-height: 44px;
+                min-width: 44px;
+                font-size: 1.2rem;
+                cursor: pointer;
+                border-radius: 8px;
+                transition: all 0.16s ease-out;
+                z-index: 1002;
+                order: 2;
+                position: relative;
+            }
+            
+            .mobile-menu-toggle:hover {
+                background: rgba(248, 250, 252, 0.5);
+            }
+            
+            .hamburger-icon {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                width: 20px;
+                height: 20px;
+                position: relative;
+            }
+            
+            .hamburger-icon .line {
+                width: 20px;
+                height: 2px;
+                background: #374151;
+                border-radius: 1px;
+                transition: all 0.16s ease-out;
+                transform-origin: center;
+                position: absolute;
+            }
+            
+            .hamburger-icon .line1 {
+                top: 6px;
+            }
+            
+            .hamburger-icon .line2 {
+                top: 50%;
+                transform: translateY(-50%);
+            }
+            
+            .hamburger-icon .line3 {
+                bottom: 6px;
+            }
+            
+            .mobile-menu-toggle.open .line1 {
+                transform: rotate(45deg) translateY(0);
+                top: 50%;
+            }
+            
+            .mobile-menu-toggle.open .line2 {
+                opacity: 0;
+                transform: translateY(-50%) scaleX(0);
+            }
+            
+            .mobile-menu-toggle.open .line3 {
+                transform: rotate(-45deg) translateY(0);
+                bottom: 50%;
+            }
+            
             .nav-links {
                 position: fixed;
-                top: 72px;
-                left: 0;
-                right: 0;
-                background: rgba(248, 250, 252, 0.95);
+                top: 80px;
+                right: 20px;
+                width: auto;
+                max-width: 200px;
+                min-width: 100px;
+                background: rgba(248, 250, 252, 0.98);
                 backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
                 flex-direction: column;
-                padding: 20px;
-                transform: translateY(-100%);
+                padding: 8px;
+                transform: translateY(-8px);
                 opacity: 0;
-                transition: all 0.3s ease;
-                border-bottom: 1px solid rgba(226, 232, 240, 0.5);
+                transition: all 0.18s ease-out;
+                border: 1px solid rgba(226, 232, 240, 0.5);
+                border-radius: 12px;
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+                z-index: 1001;
+                visibility: hidden;
+                pointer-events: none;
+                role: menu;
             }
 
             .nav-links.open {
                 transform: translateY(0);
                 opacity: 1;
+                visibility: visible;
+                pointer-events: all;
             }
 
-            .mobile-menu-toggle {
+            .nav-links li {
+                margin: 0;
+                width: 100%;
+            }
+
+            .nav-links a {
                 display: block;
+                padding: 12px 16px;
+                border-radius: 8px;
+                margin-bottom: 2px;
+                text-align: left;
+                font-size: 0.95rem;
+                font-weight: 500;
+                min-height: 44px;
+                line-height: 1.2;
+                transition: all 0.15s ease;
+                color: #374151;
+                text-decoration: none;
+                role: menuitem;
+            }
+            
+            .nav-links a:hover,
+            .nav-links a:focus {
+                background: rgba(99, 102, 241, 0.1);
+                color: #4338ca;
+            }
+            
+            .nav-links a:active {
+                background: rgba(99, 102, 241, 0.2);
+                transform: scale(0.98);
+            }
+            
+            .nav-links a:last-child {
+                margin-bottom: 0;
             }
 
-            .nav-menu {
-                gap: 16px;
+            .logo {
+                font-size: 1.5rem;
             }
         }
 
         .logo {
             font-size: 1.8rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #64748b 0%, #475569 50%, #374151 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            font-weight: 900;
+            color: #000000;
             text-decoration: none;
             letter-spacing: -0.5px;
             transition: opacity 0.3s ease;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
         }
 
         .logo:hover {
@@ -180,33 +325,84 @@
         }
 
         .cta-button {
-            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a855f7 100%);
-            color: #fff;
+            /* Shiny black with depth */
+            background: 
+                linear-gradient(145deg, #2a2a2a 0%, #000000 25%, #1a1a1a 50%, #000000 75%, #2a2a2a 100%),
+                linear-gradient(to bottom, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 15%, transparent 50%);
+            color: #ffffff;
             padding: 12px 24px;
             border-radius: 16px;
             text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
+            font-weight: 700;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            /* Premium depth effects */
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.4),
+                0 4px 16px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
             font-size: 0.9rem;
         }
 
-        .cta-button:hover {
-            background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 50%, #c084fc 100%);
-            color: #fff;
-            transform: translateY(-1px) scale(1.02);
-            box-shadow: 0 8px 30px rgba(139, 92, 246, 0.4);
+        /* Glossy shine effect for CTA button */
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent 0%,
+                rgba(255, 255, 255, 0.1) 45%,
+                rgba(255, 255, 255, 0.15) 50%,
+                rgba(255, 255, 255, 0.1) 55%,
+                transparent 100%
+            );
+            transform: rotate(45deg);
+            pointer-events: none;
+            opacity: 0.8;
         }
 
-        /* Hero Section - Clean Image Only */
+        .cta-button:hover {
+            /* Enhanced shiny black on hover */
+            background: 
+                linear-gradient(145deg, #3a3a3a 0%, #0a0a0a 25%, #2a2a2a 50%, #0a0a0a 75%, #3a3a3a 100%),
+                linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.08) 15%, transparent 50%);
+            color: #fff;
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 
+                0 12px 48px rgba(0, 0, 0, 0.5),
+                0 6px 24px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.4);
+            border-color: rgba(255, 255, 255, 0.25);
+        }
+
+        /* Hero Section - Clean Image Only (Optimized for 1920x600 aspect ratio) */
         .hero {
-            height: 75vh;
-            min-height: 500px;
+            height: 60vh;
+            min-height: 400px;
             position: relative;
             overflow: hidden;
             margin-top: 72px; /* Account for fixed header height */
+        }
+        
+        /* Override for mobile - no margins or padding */
+        @media (max-width: 768px) {
+            .hero {
+                height: auto !important;
+                min-height: 0 !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                line-height: 0 !important;
+                font-size: 0 !important;
+            }
         }
 
         /* Hero Text Section - Below Image */
@@ -236,11 +432,54 @@
             left: 0;
             right: 0;
             bottom: 0;
+            /* Dynamic color overlay - rotates every 5 seconds */
             background: 
-                radial-gradient(circle at 20% 20%, rgba(30, 41, 59, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(71, 85, 105, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 40% 60%, rgba(15, 23, 42, 0.03) 0%, transparent 50%);
+                /* Warm Gold gradient (default) */
+                linear-gradient(to right, 
+                    rgba(245, 158, 11, 0.4) 0%,      /* Strong gold on left */
+                    rgba(245, 158, 11, 0.3) 20%,     /* Medium-strong gold */
+                    rgba(245, 158, 11, 0.2) 35%,     /* Medium gold */
+                    rgba(245, 158, 11, 0.1) 45%,     /* Light gold */
+                    rgba(245, 158, 11, 0.05) 50%,    /* Very light gold at middle */
+                    rgba(245, 158, 11, 0) 55%        /* Completely transparent - right side sharp */
+                ),
+                /* Subtle glow effect concentrated on left */
+                radial-gradient(ellipse 40% 80% at 15% 50%, 
+                    rgba(245, 158, 11, 0.15) 0%, 
+                    rgba(245, 158, 11, 0.08) 30%, 
+                    transparent 50%
+                );
             pointer-events: none;
+            z-index: 1;
+            transition: all 2s ease-in-out; /* Smooth transitions between colors */
+        }
+
+        /* Color rotation animation classes */
+        .hero::before.color-gold {
+            background: 
+                linear-gradient(to right, 
+                    rgba(245, 158, 11, 0.4) 0%, rgba(245, 158, 11, 0.3) 20%, rgba(245, 158, 11, 0.2) 35%, 
+                    rgba(245, 158, 11, 0.1) 45%, rgba(245, 158, 11, 0.05) 50%, rgba(245, 158, 11, 0) 55%
+                ),
+                radial-gradient(ellipse 40% 80% at 15% 50%, rgba(245, 158, 11, 0.15) 0%, rgba(245, 158, 11, 0.08) 30%, transparent 50%);
+        }
+
+        .hero::before.color-blue {
+            background: 
+                linear-gradient(to right, 
+                    rgba(59, 130, 246, 0.4) 0%, rgba(59, 130, 246, 0.3) 20%, rgba(59, 130, 246, 0.2) 35%, 
+                    rgba(59, 130, 246, 0.1) 45%, rgba(59, 130, 246, 0.05) 50%, rgba(59, 130, 246, 0) 55%
+                ),
+                radial-gradient(ellipse 40% 80% at 15% 50%, rgba(59, 130, 246, 0.15) 0%, rgba(59, 130, 246, 0.08) 30%, transparent 50%);
+        }
+
+        .hero::before.color-gray {
+            background: 
+                linear-gradient(to right, 
+                    rgba(100, 116, 139, 0.4) 0%, rgba(100, 116, 139, 0.3) 20%, rgba(100, 116, 139, 0.2) 35%, 
+                    rgba(100, 116, 139, 0.1) 45%, rgba(100, 116, 139, 0.05) 50%, rgba(100, 116, 139, 0) 55%
+                ),
+                radial-gradient(ellipse 40% 80% at 15% 50%, rgba(100, 116, 139, 0.15) 0%, rgba(100, 116, 139, 0.08) 30%, transparent 50%);
         }
 
         .hero-subtitle-moved {
@@ -318,17 +557,24 @@
             line-height: 1.6;
         }
 
-        /* Gallery Section Styling */
-        .gallery-main-section {
+        /* Highlights Section Styling */
+        .highlights-section {
             padding: 100px 0;
-            background: 
-                linear-gradient(135deg, rgba(79, 70, 229, 0.03) 0%, transparent 50%, rgba(168, 85, 247, 0.03) 100%),
-                linear-gradient(45deg, #f8fafc 0%, #e2e8f0 25%, #f1f5f9 50%, #e2e8f0 75%, #f8fafc 100%);
+            background: linear-gradient(135deg, #d1d5db 0%, #e5e7eb 25%, #f3f4f6 50%, #e5e7eb 75%, #d1d5db 100%);
             position: relative;
             overflow: hidden;
+            text-align: center;
+        }
+        
+        /* Mobile: Small breathing space between header and content */
+        @media (max-width: 768px) {
+            .highlights-section {
+                padding: 25px 0 50px 0 !important;
+                margin: 0 !important;
+            }
         }
 
-        .gallery-main-section::before {
+        .highlights-section::before {
             content: '';
             position: absolute;
             top: 0;
@@ -336,18 +582,21 @@
             right: 0;
             bottom: 0;
             background: 
-                radial-gradient(circle at 30% 20%, rgba(79, 70, 229, 0.08) 0%, transparent 40%),
-                radial-gradient(circle at 80% 80%, rgba(168, 85, 247, 0.06) 0%, transparent 40%),
-                radial-gradient(circle at 20% 90%, rgba(59, 130, 246, 0.04) 0%, transparent 30%);
+                radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 70% 70%, rgba(248, 250, 252, 0.03) 0%, transparent 50%);
             pointer-events: none;
         }
 
-        .gallery-main-container {
-            max-width: 1400px;
+        .highlights-container {
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 40px;
             position: relative;
             z-index: 1;
+        }
+
+        .youtube-cta {
+            margin-top: 40px;
         }
 
         /* Masonry Gallery */
@@ -410,23 +659,72 @@
         }
 
         .youtube-button {
-            background: linear-gradient(135deg, #ef4444 0%, #dc2626 50%, #b91c1c 100%);
-            color: #fff;
-            padding: 16px 32px;
-            border-radius: 15px;
+            /* Shiny black with depth */
+            background: 
+                linear-gradient(145deg, #2a2a2a 0%, #000000 25%, #1a1a1a 50%, #000000 75%, #2a2a2a 100%),
+                linear-gradient(to bottom, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 15%, transparent 50%);
+            color: #ffffff;
+            padding: 18px 36px;
+            border-radius: 16px;
             text-decoration: none;
             font-weight: 700;
             font-size: 1.1rem;
             display: inline-block;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 6px 25px rgba(239, 68, 68, 0.4);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            /* Premium depth effects */
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.4),
+                0 4px 16px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Glossy shine effect */
+        .youtube-button::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent 0%,
+                rgba(255, 255, 255, 0.1) 45%,
+                rgba(255, 255, 255, 0.15) 50%,
+                rgba(255, 255, 255, 0.1) 55%,
+                transparent 100%
+            );
+            transform: rotate(45deg);
+            pointer-events: none;
+            opacity: 0.8;
         }
 
         .youtube-button:hover {
-            background: linear-gradient(135deg, #f87171 0%, #ef4444 50%, #dc2626 100%);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(239, 68, 68, 0.5);
+            /* Enhanced shiny black on hover */
+            background: 
+                linear-gradient(145deg, #3a3a3a 0%, #0a0a0a 25%, #2a2a2a 50%, #0a0a0a 75%, #3a3a3a 100%),
+                linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.08) 15%, transparent 50%);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 
+                0 12px 48px rgba(0, 0, 0, 0.5),
+                0 6px 24px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.4);
+            border-color: rgba(255, 255, 255, 0.25);
+        }
+
+        .youtube-button:active {
+            transform: translateY(-1px) scale(1.01);
+            box-shadow: 
+                0 6px 24px rgba(0, 0, 0, 0.4),
+                0 3px 12px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.3);
         }
 
         /* Lightbox Styling */
@@ -658,6 +956,52 @@
             width: 100%;
         }
 
+        /* Hero Image Progressive Loading */
+        .hero-image-bg {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-image {
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+        }
+
+        .hero-image.loaded {
+            opacity: 1;
+        }
+
+        #heroPlaceholder {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+        }
+
+        /* Keep placeholder simple - no content, just background */
+
+        .placeholder-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #1e293b 0%, #475569 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .placeholder-subtitle {
+            font-size: 1.2rem;
+            font-weight: 500;
+            opacity: 0.8;
+        }
+
         /* Optimized Animations - Reduce motion for performance */
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after {
@@ -679,8 +1023,127 @@
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 1;
+            z-index: 0; /* Behind the overlay */
             overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+        
+        /* Mobile-specific hero-image-bg */
+        @media (max-width: 768px) {
+            .hero-image-bg {
+                position: relative;
+                height: auto;
+                width: 100%;
+                margin: 0;
+                padding: 0;
+                line-height: 0;
+            }
+        }
+
+        /* Elegant Image Carousel - positioned behind hue overlay (100% bigger) */
+        .hero-carousel {
+            position: absolute;
+            top: 50%;
+            left: 25%; /* Positioned in the left area where hue overlay is */
+            transform: translate(-50%, -50%);
+            width: 600px; /* Doubled from 300px */
+            height: 400px; /* Doubled from 200px */
+            z-index: 0.5; /* Behind color overlay but in front of header image */
+            border-radius: 24px; /* Slightly increased for proportionality */
+            overflow: hidden;
+            box-shadow: 
+                0 35px 80px rgba(0, 0, 0, 0.35),
+                0 12px 30px rgba(0, 0, 0, 0.25),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.3); /* Nice black border */
+        }
+
+        .hero-carousel-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .hero-carousel-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            background: linear-gradient(135deg, #f8fafc 0%, #e5e7eb 25%, #f3f4f6 50%, #e5e7eb 75%, #f8fafc 100%);
+        }
+
+        .hero-carousel-slide.active {
+            opacity: 1;
+        }
+
+        .hero-carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            filter: brightness(0.9) contrast(1.1) saturate(1.1);
+        }
+
+        /* Simple background for carousel images while loading - merged with main rule above */
+
+        /* Elegant overlay on carousel images for better blending */
+        .hero-carousel-slide::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, 
+                rgba(0, 0, 0, 0.1) 0%, 
+                rgba(0, 0, 0, 0.05) 50%, 
+                rgba(0, 0, 0, 0.1) 100%
+            );
+            pointer-events: none;
+        }
+
+        /* Responsive adjustments for carousel - maintains elegant experience on mobile */
+        @media (max-width: 768px) {
+            .hero-carousel {
+                width: 315px; /* Sized for tablets */
+                height: 198px; /* Proportional height */
+                left: 35%; /* Moved inward to prevent cutoff */
+                top: 60%; /* Moved down to prevent cutoff */
+                transform: translate(-65%, -110px); /* Moved another 5% left and 5% up */
+                border: 1px solid rgba(255, 255, 255, 0.3); /* Gray border like desktop */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-carousel {
+                width: 227px; /* 10% smaller than 252px: 252 * 0.9 */
+                height: 142px; /* 10% smaller than 158px: 158 * 0.9 */
+                left: 40%; /* Moved further inward for phones */
+                top: 65%; /* Moved further down for phones */
+                transform: translate(-65%, -80px); /* Moved another 5% left and 5% up */
+                border-radius: 16px; /* Adjusted for larger size */
+                border: 1px solid rgba(255, 255, 255, 0.3); /* Gray border like desktop */
+            }
+        }
+
+        /* Very small screens */
+        @media (max-width: 360px) {
+            .hero-carousel {
+                width: 194px; /* 10% smaller than 216px: 216 * 0.9 */
+                height: 122px; /* 10% smaller than 135px: 135 * 0.9 */
+                left: 45%; /* Moved most inward for small phones */
+                top: 65%; /* Moved down for small phones */
+                transform: translate(-67%, -64px); /* Moved another 5% left and 5% up */
+                border-radius: 14px; /* Adjusted for larger size */
+                border: 1px solid rgba(255, 255, 255, 0.3); /* Gray border like desktop */
+            }
         }
 
         .hero-image-bg img {
@@ -705,41 +1168,74 @@
             
             .hero-image-bg .mobile-header {
                 display: block;
-                object-position: center top;
-                /* Optimize for 4:5 aspect ratio */
-                object-fit: cover;
+                width: 100%;
+                height: auto;
+                margin: 0;
+                padding: 0;
+                border: none;
+                outline: none;
+                vertical-align: top;
+                line-height: 0;
             }
             
-            /* Adjust hero dimensions for mobile image aspect ratio (4:5) */
+            /* Mobile hero - image determines everything */
             .hero {
-                height: 60vh;
-                min-height: 480px;
+                height: auto;
+                width: 100%;
+                margin: 0;
+                padding: 0;
+                position: relative;
+                min-height: 0;
+                line-height: 0;
+                font-size: 0;
             }
         }
 
         /* Fine-tune for very small phones */
         @media (max-width: 480px) {
             .hero {
-                height: 55vh;
-                min-height: 400px;
+                height: auto;
+                width: 100%;
+                margin: 0;
+                padding: 0;
+                position: relative;
+                min-height: 0;
+                line-height: 0;
+                font-size: 0;
             }
             
             .hero-image-bg .mobile-header {
-                object-position: center center;
+                display: block;
+                width: 100%;
+                height: auto;
+                margin: 0;
+                padding: 0;
+                vertical-align: top;
+                line-height: 0;
             }
         }
 
         /* Portrait orientation optimization */
         @media (max-width: 768px) and (orientation: portrait) {
             .hero {
-                height: 50vh;
-                min-height: 450px;
-                max-height: 600px;
+                height: auto;
+                width: 100%;
+                margin: 0;
+                padding: 0;
+                position: relative;
+                min-height: 0;
+                line-height: 0;
+                font-size: 0;
             }
             
             .hero-image-bg .mobile-header {
-                object-fit: cover;
-                object-position: center top;
+                display: block;
+                width: 100%;
+                height: auto;
+                margin: 0;
+                padding: 0;
+                vertical-align: top;
+                line-height: 0;
             }
         }
 
@@ -994,11 +1490,11 @@
 
         .stats-container {
             max-width: 1000px;
-            margin: 0 auto;
+            margin: 40px auto 0;
             padding: 0 40px;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 50px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
             text-align: center;
             position: relative;
             z-index: 1;
@@ -1006,17 +1502,38 @@
 
         .stat-item {
             padding: 30px 20px;
-            background: rgba(248, 250, 252, 0.05);
+            background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(25px) saturate(180%);
             border-radius: 24px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(0, 0, 0, 0.12);
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.12),
+                0 2px 8px rgba(0, 0, 0, 0.08),
+                inset 0 1px 0 rgba(255, 255, 255, 0.6);
             transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+        }
+
+        .stat-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%, rgba(0, 0, 0, 0.02) 100%);
+            border-radius: 22px;
+            pointer-events: none;
         }
 
         .stat-item:hover {
-            background: rgba(248, 250, 252, 0.1);
+            background: rgba(255, 255, 255, 0.95);
             transform: translateY(-8px) scale(1.05);
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+            box-shadow: 
+                0 20px 50px rgba(0, 0, 0, 0.2),
+                0 8px 20px rgba(0, 0, 0, 0.12),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            border-color: rgba(0, 0, 0, 0.18);
         }
 
         .stat-number {
@@ -1190,26 +1707,64 @@
         }
 
         .final-cta-button {
-            background: linear-gradient(135deg, #3b82f6 0%, #6366f1 50%, #8b5cf6 100%);
-            color: #fff;
+            /* Shiny black with depth */
+            background: 
+                linear-gradient(145deg, #2a2a2a 0%, #000000 25%, #1a1a1a 50%, #000000 75%, #2a2a2a 100%),
+                linear-gradient(to bottom, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 15%, transparent 50%);
+            color: #ffffff;
             padding: 20px 40px;
             border-radius: 20px;
             text-decoration: none;
             font-weight: 700;
             font-size: 1.2rem;
             display: inline-block;
-            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(20px);
-            box-shadow: 0 8px 32px rgba(59, 130, 246, 0.3);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            /* Premium depth effects */
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.4),
+                0 4px 16px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Glossy shine effect for final CTA button */
+        .final-cta-button::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent 0%,
+                rgba(255, 255, 255, 0.1) 45%,
+                rgba(255, 255, 255, 0.15) 50%,
+                rgba(255, 255, 255, 0.1) 55%,
+                transparent 100%
+            );
+            transform: rotate(45deg);
+            pointer-events: none;
+            opacity: 0.8;
         }
 
         .final-cta-button:hover {
-            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a855f7 100%);
+            /* Enhanced shiny black on hover */
+            background: 
+                linear-gradient(145deg, #3a3a3a 0%, #0a0a0a 25%, #2a2a2a 50%, #0a0a0a 75%, #3a3a3a 100%),
+                linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.08) 15%, transparent 50%);
             color: #fff;
             transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 12px 48px rgba(99, 102, 241, 0.4);
-            border-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 
+                0 12px 48px rgba(0, 0, 0, 0.5),
+                0 6px 24px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.4);
+            border-color: rgba(255, 255, 255, 0.25);
         }
 
         /* Footer */
@@ -1349,9 +1904,14 @@
             }
             
             .hero {
-                height: 60vh;
-                min-height: 480px;
-                margin-top: 60px; /* Adjusted for mobile header height */
+                height: auto;
+                min-height: 0;
+                margin: 0;
+                padding: 0;
+                position: relative;
+                width: 100%;
+                line-height: 0;
+                font-size: 0;
             }
             
             .hero-text-section {
@@ -1532,8 +2092,8 @@
         /* Tablet Portrait */
         @media (min-width: 481px) and (max-width: 768px) {
             .hero {
-                height: 75vh;
-                min-height: 500px;
+                height: 60vh;
+                min-height: 400px;
                 margin-top: 65px; /* Adjusted for tablet header height */
             }
             
@@ -1570,9 +2130,21 @@
             }
 
             .stats-container {
-                padding: 0 25px;
-                grid-template-columns: repeat(2, 1fr);
-                gap: 25px;
+                padding: 0 15px;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 15px;
+            }
+            
+            .stat-item {
+                padding: 20px 10px;
+            }
+            
+            .stat-number {
+                font-size: 1.2rem;
+            }
+            
+            .stat-label {
+                font-size: 0.7rem;
             }
 
             .criteria-grid {
@@ -1595,8 +2167,8 @@
         /* Tablet Landscape / Small Desktop */
         @media (min-width: 769px) and (max-width: 1024px) {
             .hero {
-                height: 80vh;
-                min-height: 550px;
+                height: 65vh;
+                min-height: 450px;
                 margin-top: 70px; /* Adjusted for tablet landscape header height */
             }
             
@@ -1714,8 +2286,8 @@
         /* Landscape phone orientation fixes */
         @media (max-width: 768px) and (orientation: landscape) {
             .hero {
-                height: 80vh;
-                min-height: 350px;
+                height: 65vh;
+                min-height: 280px;
             }
             
             .hero-text-section {
@@ -2163,15 +2735,56 @@
         }
 
         .schedule-button.primary {
-            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a855f7 100%);
-            color: #fff;
-            box-shadow: 0 6px 25px rgba(99, 102, 241, 0.3);
+            /* Shiny black with depth */
+            background: 
+                linear-gradient(145deg, #2a2a2a 0%, #000000 25%, #1a1a1a 50%, #000000 75%, #2a2a2a 100%),
+                linear-gradient(to bottom, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 15%, transparent 50%);
+            color: #ffffff;
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            /* Premium depth effects */
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.4),
+                0 4px 16px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Glossy shine effect for schedule buttons */
+        .schedule-button.primary::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent 0%,
+                rgba(255, 255, 255, 0.1) 45%,
+                rgba(255, 255, 255, 0.15) 50%,
+                rgba(255, 255, 255, 0.1) 55%,
+                transparent 100%
+            );
+            transform: rotate(45deg);
+            pointer-events: none;
+            opacity: 0.8;
         }
 
         .schedule-button.primary:hover {
-            background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 50%, #c084fc 100%);
-            transform: translateY(-2px) scale(1.02);
-            box-shadow: 0 8px 30px rgba(139, 92, 246, 0.4);
+            /* Enhanced shiny black on hover */
+            background: 
+                linear-gradient(145deg, #3a3a3a 0%, #0a0a0a 25%, #2a2a2a 50%, #0a0a0a 75%, #3a3a3a 100%),
+                linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.08) 15%, transparent 50%);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 
+                0 12px 48px rgba(0, 0, 0, 0.5),
+                0 6px 24px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.4);
+            border-color: rgba(255, 255, 255, 0.25);
         }
 
         .schedule-button.secondary {
@@ -2557,81 +3170,108 @@
         <nav class="nav-container">
             <a href="#" class="logo">ṢOGBÉDÈ</a>
             <div class="nav-menu">
-                <ul class="nav-links">
-                    <li><a href="#episodes">Gallery</a></li>
-                    <li><a href="#faq">FAQ</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                <ul class="nav-links" id="mobile-nav-menu" role="menu">
+                    <li><a href="#faq" role="menuitem">FAQ</a></li>
+                    <li><a href="#contact" role="menuitem">Contact</a></li>
                 </ul>
-                <a href="signup.html" class="cta-button">Be on the Show</a>
+                <a href="signup.html" class="cta-button">Join Us</a>
             </div>
-            <button class="mobile-menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false">☰</button>
+            <button class="mobile-menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-nav-menu">
+                <span class="hamburger-icon">
+                    <span class="line line1"></span>
+                    <span class="line line2"></span>
+                    <span class="line line3"></span>
+                </span>
+            </button>
         </nav>
     </header>
 
     <!-- Hero Section -->
     <section class="hero">
-        <!-- Responsive Header Images -->
+        <!-- Responsive Header Images with Progressive Loading -->
         <div class="hero-image-bg">
+            <!-- Progressive loading placeholder - clean background only -->
+            <div class="image-placeholder" id="heroPlaceholder"></div>
+            
             <!-- Desktop Header Image -->
-            <img class="desktop-header" src="images/header" alt="ṢOGBÉDÈ - Yoruba Game Show" 
-                 onerror="this.src='images/header.jpg'; this.onerror=function(){this.src='images/header.png';};"
-                 loading="eager" />
+            <img class="desktop-header hero-image" 
+                 src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkyMCIgaGVpZ2h0PSI2MDAiIHZpZXdCb3g9IjAgMCAxOTIwIDYwMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjE5MjAiIGhlaWdodD0iNjAwIiBmaWxsPSIjZjFmNWY5Ii8+Cjwvc3ZnPgo="
+                 data-src="images/header.jpg" 
+                 alt="ṢOGBÉDÈ - Yoruba Game Show" 
+                 loading="eager"
+                 onload="this.parentElement.querySelector('#heroPlaceholder').style.display='none'; this.style.opacity='1';"
+                 onerror="this.style.display='none'; console.warn('Desktop header image not found');"/>
             
-            <!-- Mobile Header Image (4:5 aspect ratio) -->
-            <img class="mobile-header" src="images/website header mobile.jpg" alt="ṢOGBÉDÈ - Yoruba Game Show Mobile" 
-                 onerror="this.src='images/website-header-mobile.jpg';"
-                 loading="eager" />
+            <!-- Mobile Header Image - Updated version -->
+            <img class="mobile-header hero-image" 
+                 src="images/mobile header.jpg?v=1735238000" 
+                 alt="ṢOGBÉDÈ - Yoruba Cultural Patterns" 
+                 loading="eager"
+                 onload="this.parentElement.querySelector('#heroPlaceholder').style.display='none'; this.style.opacity='1';"
+                 onerror="console.error('Mobile header failed to load');"/>
+        </div>
+
+        <!-- Elegant Image Carousel - positioned behind hue overlay -->
+        <div class="hero-carousel">
+            <div class="hero-carousel-inner">
+                <div class="hero-carousel-slide active">
+                    <img src="images/website header2.jpg" alt="ṢOGBÉDÈ Highlights" loading="lazy" onerror="this.parentElement.style.opacity='0.5'; this.style.display='none';">
+                </div>
+                <div class="hero-carousel-slide">
+                    <img src="images/GBÉDÈ.jpg" alt="ṢOGBÉDÈ Show Logo" loading="lazy" onerror="this.parentElement.style.opacity='0.5'; this.style.display='none';">
+                </div>
+                <div class="hero-carousel-slide">
+                    <img src="images/REEDIT.jpg" alt="ṢOGBÉDÈ Production" loading="lazy" onerror="this.parentElement.style.opacity='0.5'; this.style.display='none';">
+                </div>
+                <div class="hero-carousel-slide">
+                    <img src="images/SOGBEDE2 (19 of 131).jpg" alt="ṢOGBÉDÈ Behind Scenes" loading="lazy" onerror="this.parentElement.style.opacity='0.5'; this.style.display='none';">
+                </div>
+                <div class="hero-carousel-slide">
+                    <img src="images/SOGBEDE2 (30 of 131).jpg" alt="ṢOGBÉDÈ Show Moments" loading="lazy" onerror="this.parentElement.style.opacity='0.5'; this.style.display='none';">
+                </div>
+                <div class="hero-carousel-slide">
+                    <img src="images/website header2.jpg" alt="ṢOGBÉDÈ Highlights" loading="lazy" onerror="this.parentElement.style.opacity='0.5'; this.style.display='none';">
+                </div>
+            </div>
         </div>
     </section>
-
-    <!-- Hero Text Section (moved below image) -->
-    <section class="hero-text-section">
-        <div class="hero-text-container">
-            <p class="hero-subtitle-moved">Where Culture Meets Laughter.<br>Where You Are The Art.</p>
-            <p class="hero-description-moved">
-                The dynamic Yoruba game show that celebrates our heritage through joy, connection, and friendly competition.
+    <!-- Consolidated Hero Content Section -->
+    <section class="highlights-section">
+        <div class="highlights-container">
+            <h2 class="section-title scroll-animate">Where Culture Meets Laughter.<br>Where You Shine as the Art.</h2>
+            <p class="section-subtitle scroll-animate">
+                We celebrate Yoruba heritage through joy, connection, and playful competition.<br>
+                With every laugh, every move, and every story — our contestants bring the color,<br>
+                and together we celebrate culture in its brightest form.
             </p>
-        </div>
-    </section>
-
-    <!-- Gallery Section - Beautiful Faces, Beautiful Moments -->
-    <section class="gallery-main-section" id="episodes">
-        <div class="gallery-main-container">
-            <h2 class="section-title scroll-animate">Beautiful Faces, Beautiful Moments</h2>
-            <p class="section-subtitle scroll-animate">Our contestants bring the color. Every frame tells a story of joy, culture, and celebration.</p>
             
-            <div class="masonry-gallery scroll-animate" id="mainGallery">
-                <!-- Gallery images will be loaded dynamically -->
-                <div class="loading-gallery">
-                    <div class="loading-spinner"></div>
-                    <p>Loading beautiful moments...</p>
+            <!-- Stats moved here from bottom -->
+            <div class="stats-container scroll-animate">
+                <div class="stat-item">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Fund Guarantee</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">$2K</span>
+                    <span class="stat-label">Win Up To</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Cultural Collaboration</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">✨</span>
+                    <span class="stat-label">Amazing Experience</span>
                 </div>
             </div>
             
-            <div class="gallery-cta scroll-animate">
-                <a href="https://youtube.com/@SoGbede" target="_blank" rel="noopener noreferrer" class="youtube-button">
-                    📺 Watch Full Episodes on YouTube
-                </a>
-            </div>
+            <!-- YouTube button moved to "Never Miss" section -->
         </div>
     </section>
 
-    <!-- Lightbox Modal -->
-    <div id="lightbox" class="lightbox">
-        <div class="lightbox-content">
-            <span class="lightbox-close">&times;</span>
-            <img class="lightbox-image" src="" alt="">
-            <div class="lightbox-caption"></div>
-            <div class="lightbox-nav">
-                <button class="lightbox-prev">❮</button>
-                <button class="lightbox-next">❯</button>
-            </div>
-        </div>
-    </div>
-
 
     <!-- What We're Looking For - MOVED UP -->
-    <section class="criteria-section">
+    <section class="criteria-section" id="criteria">
         <div class="criteria-container">
             <h2 class="criteria-title scroll-animate">We're Looking for Amazing People Like You!</h2>
             
@@ -2675,7 +3315,10 @@
                     <a href="https://youtube.com/@SoGbede" target="_blank" rel="noopener noreferrer" class="schedule-button primary">
                         🔔 Subscribe & Get Notified
                     </a>
-                    <a href="https://www.instagram.com/so.gbede/" target="_blank" rel="noopener noreferrer" class="schedule-button secondary">
+                    <a href="https://youtube.com/@SoGbede" target="_blank" rel="noopener noreferrer" class="schedule-button primary">
+                        📺 Watch Full Episodes
+                    </a>
+                    <a href="https://www.instagram.com/so.gbede/" target="_blank" rel="noopener noreferrer" class="schedule-button primary">
                         📱 Follow on Instagram
                     </a>
                 </div>
@@ -2683,27 +3326,6 @@
         </div>
     </section>
 
-    <!-- Stats Section - MOVED TO BOTTOM BEFORE CTA -->
-    <section class="stats-section">
-        <div class="stats-container scroll-animate">
-            <div class="stat-item">
-                <span class="stat-number">100%</span>
-                <span class="stat-label">Fund Guarantee</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-number">$2K</span>
-                <span class="stat-label">Maximum Prize</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-number">100%</span>
-                <span class="stat-label">Cultural Celebration</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-number">✨</span>
-                <span class="stat-label">Amazing Experience</span>
-            </div>
-        </div>
-    </section>
 
     <!-- FAQ Section -->
     <section class="faq-section" id="faq">
@@ -2812,7 +3434,7 @@
             
             <div class="footer-section">
                 <h3>Quick Links</h3>
-                <a href="#episodes">Gallery</a>
+                <a href="#criteria">Join Us</a>
                 <a href="#faq">FAQ</a>
                 <a href="signup.html">Apply Now</a>
             </div>
@@ -2825,7 +3447,7 @@
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-    <script src="gallery-images.js"></script>
+    <!-- Gallery removed for faster page loading -->
     
     <script>
         // Scroll animations
@@ -3030,9 +3652,7 @@
             preloadCriticalImages() {
                 return new Promise((resolve) => {
                     const criticalImages = [
-                        'images/header',
-                        'images/header.jpg', 
-                        'images/header.png'
+                        'images/header.jpg'
                     ];
                     
                     let loaded = 0;
@@ -3040,9 +3660,9 @@
                     
                     criticalImages.forEach(src => {
                         const img = new Image();
-                        // Set expected dimensions for better loading performance
+                        // Set expected dimensions for better loading performance (updated for 1920x600)
                         img.width = 1920;
-                        img.height = 800;
+                        img.height = 600;
                         img.onload = img.onerror = () => {
                             loaded++;
                             this.updateProgress((loaded / total) * 30);
@@ -3182,18 +3802,149 @@
             }
         }
 
-        document.addEventListener('DOMContentLoaded', async () => {
+        // Progressive Hero Image Loading
+        function initializeHeroImageLoading() {
+            const heroImages = document.querySelectorAll('.hero-image');
+            const placeholder = document.getElementById('heroPlaceholder');
+            
+            heroImages.forEach(img => {
+                if (img.dataset.src) {
+                    // Create new image to preload
+                    const newImg = new Image();
+                    newImg.onload = function() {
+                        img.src = img.dataset.src;
+                        img.classList.add('loaded');
+                        
+                        // Hide placeholder when first image loads
+                        if (placeholder) {
+                            placeholder.style.opacity = '0';
+                            setTimeout(() => {
+                                placeholder.style.display = 'none';
+                            }, 800);
+                        }
+                    };
+                    
+                    newImg.onerror = function() {
+                        console.warn('Failed to load hero image:', img.dataset.src);
+                        if (placeholder) {
+                            placeholder.querySelector('.placeholder-subtitle').textContent = 'Image loading failed';
+                        }
+                    };
+                    
+                    // Start loading
+                    newImg.src = img.dataset.src;
+                }
+            });
+        }
+
+        // Header Color - Static Elegant Gray
+        function initializeHeaderColorCarousel() {
+            const colors = ['gray'];
+            const colorNames = ['Elegant Gray'];
+            let currentIndex = 0;
+
+            // Add a style tag to dynamically apply the colors to the pseudo-element
+            const styleElement = document.createElement('style');
+            document.head.appendChild(styleElement);
+
+            function updateOverlayColor() {
+                const currentColor = colors[currentIndex];
+                const currentColorName = colorNames[currentIndex];
+                
+                // Update the hero::before styling dynamically
+                styleElement.textContent = `.hero::before { 
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    ${getColorStyles(currentColor)}
+                    pointer-events: none;
+                    z-index: 1;
+                    transition: all 2s ease-in-out;
+                }`;
+                
+                // Optional: Log current color for debugging
+                console.log(`ṢOGBÉDÈ Header: ${currentColorName} overlay active`);
+                
+                // Move to next color
+                currentIndex = (currentIndex + 1) % colors.length;
+            }
+
+            function getColorStyles(colorType) {
+                // Always return elegant gray
+                return `background: 
+                    linear-gradient(to right, 
+                        rgba(100, 116, 139, 0.4) 0%, rgba(100, 116, 139, 0.3) 20%, rgba(100, 116, 139, 0.2) 35%, 
+                        rgba(100, 116, 139, 0.1) 45%, rgba(100, 116, 139, 0.05) 50%, rgba(100, 116, 139, 0) 55%
+                    ),
+                    radial-gradient(ellipse 40% 80% at 15% 50%, rgba(100, 116, 139, 0.15) 0%, rgba(100, 116, 139, 0.08) 30%, transparent 50%);`;
+            }
+
+            // Set static gray color
+            updateOverlayColor(); // Set gray color once
+        }
+
+        // Hero Image Carousel - rotates through ṢOGBÉDÈ images every 4 seconds
+        function initializeHeroImageCarousel() {
+            const slides = document.querySelectorAll('.hero-carousel-slide');
+            let currentSlide = 0;
+
+            console.log(`🎬 CAROUSEL INITIALIZED: Found ${slides.length} slides`);
+            
+            // Ensure first slide is active
+            if (slides.length > 0) {
+                slides[0].classList.add('active');
+                console.log(`🎯 First slide activated`);
+            }
+
+            function showNextSlide() {
+                // Remove active class from current slide
+                slides[currentSlide].classList.remove('active');
+                
+                // Move to next slide
+                currentSlide = (currentSlide + 1) % slides.length;
+                
+                // Add active class to new slide
+                slides[currentSlide].classList.add('active');
+                
+                // Log for debugging
+                console.log(`🎬 CAROUSEL: Now showing slide ${currentSlide + 1} of ${slides.length}`);
+                
+                // Log the current image source
+                const img = slides[currentSlide].querySelector('img');
+                if (img) {
+                    console.log(`📷 Image: ${img.src.split('/').pop()}`);
+                }
+            }
+
+            // Start the image carousel - change every 2 seconds
+            if (slides.length > 1) {
+                setInterval(showNextSlide, 3000);
+                console.log(`▶️ CAROUSEL STARTED: Will rotate every 2 seconds`);
+            } else {
+                console.error(`❌ CAROUSEL ERROR: Only ${slides.length} slides found`);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize carousel FIRST - independent of other loading
+            initializeHeroImageCarousel();
+            
             // Initialize performance manager
             window.performanceManager = new PerformanceManager();
             
-            // Preload critical resources
-            await window.performanceManager.preloadCriticalImages();
+            // Initialize other components (non-blocking)
+            initializeHeroImageLoading();
+            initializeHeaderColorCarousel();
             
-            // Load gallery with optimizations
-            loadGalleryOptimized();
+            // Start preloading in background (don't await)
+            window.performanceManager.preloadCriticalImages();
             
-            // Initialize lightbox
-            initializeLightbox();
+            // Gallery removed for performance - no longer loading images
+            
+            // Lightbox removed with gallery
             
             window.performanceManager.updateProgress(85, 'Setting up animations...');
 
@@ -3264,20 +4015,85 @@
                 });
             });
 
-            // Mobile menu toggle
+            // Mobile menu toggle with enhanced functionality
             const mobileToggle = document.querySelector('.mobile-menu-toggle');
             const navLinks = document.querySelector('.nav-links');
+            const navMenu = document.querySelector('.nav-menu');
             
-            mobileToggle.addEventListener('click', function() {
-                navLinks.classList.toggle('open');
-            });
-
-            // Close mobile menu when clicking on a link
-            document.querySelectorAll('.nav-links a').forEach(link => {
-                link.addEventListener('click', function() {
+            function closeMenu() {
+                if (navLinks && mobileToggle) {
                     navLinks.classList.remove('open');
+                    mobileToggle.classList.remove('open');
+                    mobileToggle.setAttribute('aria-expanded', 'false');
+                    mobileToggle.focus(); // Return focus to trigger
+                }
+            }
+            
+            function openMenu() {
+                if (navLinks && mobileToggle) {
+                    navLinks.classList.add('open');
+                    mobileToggle.classList.add('open');
+                    mobileToggle.setAttribute('aria-expanded', 'true');
+                    // Focus first menu item
+                    const firstMenuItem = navLinks.querySelector('a');
+                    if (firstMenuItem) firstMenuItem.focus();
+                }
+            }
+            
+            if (mobileToggle && navLinks) {
+                // Toggle menu on button click
+                mobileToggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    const isOpen = navLinks.classList.contains('open');
+                    if (isOpen) {
+                        closeMenu();
+                    } else {
+                        openMenu();
+                    }
                 });
-            });
+                
+                // Close menu when clicking on nav links
+                const navLinksItems = document.querySelectorAll('.nav-links a');
+                navLinksItems.forEach(link => {
+                    link.addEventListener('click', closeMenu);
+                });
+                
+                // Close menu when clicking outside
+                document.addEventListener('click', function(e) {
+                    if (!navMenu.contains(e.target) && navLinks.classList.contains('open')) {
+                        closeMenu();
+                    }
+                });
+                
+                // Close menu on Escape key
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && navLinks.classList.contains('open')) {
+                        closeMenu();
+                    }
+                });
+                
+                // Close menu on scroll
+                let scrollTimeout;
+                window.addEventListener('scroll', function() {
+                    if (navLinks.classList.contains('open')) {
+                        clearTimeout(scrollTimeout);
+                        scrollTimeout = setTimeout(() => {
+                            closeMenu();
+                        }, 100);
+                    }
+                });
+                
+                // Close menu on resize
+                window.addEventListener('resize', function() {
+                    if (window.innerWidth > 768 && navLinks.classList.contains('open')) {
+                        closeMenu();
+                    }
+                });
+            }
+
+            // Duplicate code removed - handled above in mobile menu toggle section
             
             // Performance optimizations
             window.performanceManager.updateProgress(90, 'Finalizing setup...');
@@ -3286,6 +4102,9 @@
             setTimeout(() => {
                 // Initialize additional performance optimizations
                 initPerformanceOptimizations();
+                
+                // Register Service Worker for caching
+                registerServiceWorker();
                 
                 window.performanceManager.updateProgress(100, 'Welcome to ṢOGBÉDÈ!');
                 
@@ -3302,8 +4121,7 @@
             
             // Prefetch important resources
             const prefetchLinks = [
-                'signup.html',
-                'gallery-images.js'
+                'signup.html'
             ];
             
             prefetchLinks.forEach(href => {
@@ -3330,6 +4148,32 @@
                     }
                 });
             }, 2000);
+        }
+
+        // Service Worker Registration
+        function registerServiceWorker() {
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => {
+                        console.log('🚀 ṢOGBÉDÈ: Service Worker registered:', registration);
+                        
+                        // Check for updates
+                        registration.addEventListener('updatefound', () => {
+                            const newWorker = registration.installing;
+                            newWorker.addEventListener('statechange', () => {
+                                if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                                    // New version available
+                                    console.log('🔄 ṢOGBÉDÈ: New version available!');
+                                }
+                            });
+                        });
+                    })
+                    .catch(error => {
+                        console.warn('⚠️ ṢOGBÉDÈ: Service Worker registration failed:', error);
+                    });
+            } else {
+                console.log('📱 ṢOGBÉDÈ: Service Worker not supported in this browser');
+            }
         }
     </script>
 </body>
