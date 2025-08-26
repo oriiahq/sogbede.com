@@ -98,32 +98,69 @@ Migration from Airtable complete - much better file handling!
         .logo {
             font-size: 2rem;
             font-weight: 900;
-            background: linear-gradient(135deg, #1e293b 0%, #475569 50%, #0f172a 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: #000000;
             text-decoration: none;
             letter-spacing: -1px;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
         }
 
         .back-button {
-            background: linear-gradient(135deg, #1e293b 0%, #334155 50%, #0f172a 100%);
-            color: #fff;
+            /* Shiny black with depth */
+            background: 
+                linear-gradient(145deg, #2a2a2a 0%, #000000 25%, #1a1a1a 50%, #000000 75%, #2a2a2a 100%),
+                linear-gradient(to bottom, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 15%, transparent 50%);
+            color: #ffffff;
             padding: 10px 20px;
             border-radius: 10px;
             text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            font-weight: 700;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            /* Premium depth effects */
+            box-shadow: 
+                0 6px 24px rgba(0, 0, 0, 0.3),
+                0 3px 12px rgba(0, 0, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
             font-size: 0.9rem;
         }
 
+        /* Glossy shine effect for back button */
+        .back-button::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent 0%,
+                rgba(255, 255, 255, 0.1) 45%,
+                rgba(255, 255, 255, 0.15) 50%,
+                rgba(255, 255, 255, 0.1) 55%,
+                transparent 100%
+            );
+            transform: rotate(45deg);
+            pointer-events: none;
+            opacity: 0.8;
+        }
+
         .back-button:hover {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 250, 252, 0.9) 100%);
-            color: #1e293b;
-            transform: translateY(-1px);
+            /* Enhanced shiny black on hover */
+            background: 
+                linear-gradient(145deg, #3a3a3a 0%, #0a0a0a 25%, #2a2a2a 50%, #0a0a0a 75%, #3a3a3a 100%),
+                linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.08) 15%, transparent 50%);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.4),
+                0 4px 16px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.4);
+            border-color: rgba(255, 255, 255, 0.25);
         }
 
         /* Main Container */
@@ -692,42 +729,70 @@ Migration from Airtable complete - much better file handling!
             padding: 20px;
             font-size: 1.3rem;
             font-weight: 800;
-            background: linear-gradient(135deg, #1e293b 0%, #334155 25%, #475569 50%, #334155 75%, #1e293b 100%);
-            color: #fff;
+            /* Shiny black with depth */
+            background: 
+                linear-gradient(145deg, #2a2a2a 0%, #000000 25%, #1a1a1a 50%, #000000 75%, #2a2a2a 100%),
+                linear-gradient(to bottom, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 15%, transparent 50%);
+            color: #ffffff;
             border: none;
             border-radius: 18px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             margin-top: 30px;
             position: relative;
             overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 8px 32px rgba(30, 41, 59, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            /* Premium depth effects */
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.4),
+                0 4px 16px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
         }
 
+        /* Glossy shine effect for submit button */
         .submit-button::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent 0%,
+                rgba(255, 255, 255, 0.1) 45%,
+                rgba(255, 255, 255, 0.15) 50%,
+                rgba(255, 255, 255, 0.1) 55%,
+                transparent 100%
+            );
+            transform: rotate(45deg);
+            pointer-events: none;
+            opacity: 0.8;
         }
 
         .submit-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 40px rgba(30, 41, 59, 0.3);
-        }
-
-        .submit-button:hover::before {
-            left: 100%;
+            /* Enhanced shiny black on hover */
+            background: 
+                linear-gradient(145deg, #3a3a3a 0%, #0a0a0a 25%, #2a2a2a 50%, #0a0a0a 75%, #3a3a3a 100%),
+                linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.08) 15%, transparent 50%);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 
+                0 12px 48px rgba(0, 0, 0, 0.5),
+                0 6px 24px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.4);
+            border-color: rgba(255, 255, 255, 0.25);
         }
 
         .submit-button:active {
-            transform: translateY(-1px);
+            transform: translateY(-1px) scale(1.01);
+            box-shadow: 
+                0 6px 24px rgba(0, 0, 0, 0.4),
+                0 3px 12px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.3);
         }
 
         .submit-button:disabled {
@@ -1188,7 +1253,7 @@ Migration from Airtable complete - much better file handling!
 
                     <div class="form-group">
                         <label for="selfie">Àwòrán tàbí Fídíò Ara Rẹ (Upload Photo or Video) <span class="required">*</span></label>
-                        <input type="file" id="selfie" name="selfie" class="form-input" accept="image/*,video/*" capture="user" required>
+                        <input type="file" id="selfie" name="selfie" class="form-input" accept="image/*,video/*" required>
                         <div class="helper-text">
                             📸 Upload a photo or 🎥 record a 1-minute video introducing yourself!<br>
                             • On mobile: Tap to use camera or choose from files<br>
@@ -1489,6 +1554,43 @@ Migration from Airtable complete - much better file handling!
             }
         }
 
+        // Email notification system
+        async function sendApplicationEmails(applicationData) {
+            try {
+                console.log('Sending application emails...');
+                
+                // Call your Supabase Edge Function
+                const { data, error } = await supabase.functions.invoke('send-application-emails', {
+                    body: {
+                        applicantData: {
+                            full_name: applicationData.full_name,
+                            email: applicationData.email,
+                            phone: applicationData.phone,
+                            city: applicationData.city,
+                            state: applicationData.state,
+                            age: applicationData.age,
+                            performance_experience: applicationData.performance_experience,
+                            partner_name: applicationData.partner_name,
+                            filming_dates: applicationData.filming_dates,
+                            why_join: applicationData.why_join
+                        }
+                    }
+                });
+
+                if (error) {
+                    console.error('Email sending error:', error);
+                    // Don't fail the entire application if emails fail
+                    // Just log it for debugging
+                } else {
+                    console.log('Emails sent successfully:', data);
+                }
+
+            } catch (err) {
+                console.error('Email function error:', err);
+                // Don't fail the application process
+            }
+        }
+
         // Form submission handler
         async function handleFormSubmission(event) {
             event.preventDefault();
@@ -1530,6 +1632,10 @@ Migration from Airtable complete - much better file handling!
                     result = await submitToSupabase(applicationData);
                     console.log('Application submitted successfully to Supabase:', result);
                     submissionSuccessful = true;
+                    
+                    // 🚀 NEW: Send automated emails after successful Supabase submission
+                    await sendApplicationEmails(applicationData);
+                    
                 } catch (supabaseError) {
                     console.error('Supabase submission failed, using fallback:', supabaseError);
                     
